@@ -1,0 +1,157 @@
+﻿@using Exam_Web_Core.ViewModels
+@model DoExam_Model
+@{
+    ViewBag.Title = "DoExam";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@*<script src="~/Assets/User/scripts/timer_count_down.js"></script>*@
+<script>
+        function timer_count_down(minutes) {
+        var secondLeft = minutes * 60;
+        var h, m, s;
+        var timer = function () {
+            if (secondLeft < 0) {
+            clearInterval(Interval);
+                document.getElementsByClassName("hours")[0].innerHTML = "";
+                document.getElementsByClassName("minutes")[0].innerHTML = "";
+                document.getElementsByClassName("seconds")[0].innerHTML = "Hết giờ";
+                document.getElementsByClassName("hours")[1].innerHTML = "";
+                document.getElementsByClassName("minutes")[1].innerHTML = "";
+                document.getElementsByClassName("seconds")[1].innerHTML = "Hết giờ";
+                alert("Bạn đã hết thời gian làm bài");
+                document.getElementById("submit_btn").click();
+
+            } else {
+            h = parseInt(secondLeft / 3600);
+                m = parseInt(secondLeft / 60) - 60 * h;
+                s = secondLeft - h * 3600 - m * 60;
+                if (h < 10) {
+            document.getElementsByClassName("hours")[0].innerHTML = "0" + h + ":";
+                    document.getElementsByClassName("hours")[1].innerHTML = "0" + h + ":";
+                } else {
+            document.getElementsByClassName("hours")[0].innerHTML = h + ":";
+                    document.getElementsByClassName("hours")[1].innerHTML = h + ":";
+                }
+                if (m < 10) {
+            document.getElementsByClassName("minutes")[0].innerHTML = "0" + m + ":";
+                    document.getElementsByClassName("minutes")[1].innerHTML = "0" + m + ":";
+                } else {
+            document.getElementsByClassName("minutes")[0].innerHTML = m + ":";
+                    document.getElementsByClassName("minutes")[1].innerHTML = m + ":";
+                }
+                if (s < 10) {
+            document.getElementsByClassName("seconds")[0].innerHTML = "0" + s;
+                    document.getElementsByClassName("seconds")[1].innerHTML = "0" + s;
+
+                } else {
+            document.getElementsByClassName("seconds")[0].innerHTML = s;
+                    document.getElementsByClassName("seconds")[1].innerHTML = s;
+                }
+
+                if (secondLeft < 90) {
+                    document.getElementsByClassName("clock")[0].classList.add("btn-danger")
+                    document.getElementsByClassName("clock")[0].classList.remove("btn-secondary")
+                    document.getElementsByClassName("clock")[1].classList.add("btn-danger")
+                    document.getElementsByClassName("clock")[1].classList.remove("btn-secondary")
+                }
+            }
+            secondLeft--;
+            document.getElementById("timePast").value = minutes * 60 - secondLeft;
+        }
+        var Interval = setInterval(timer, 1000);
+
+    }
+    window.onload = timer_count_down(@ViewBag.DeThi.ThoiGianLamBai);
+    //window.onload = timer_count_down(1);
+</script>
+<div class="card">
+    <div class="card-header">
+        <div class="col-12 p-1 pb-2 text-center">
+            <h4 class="text-primary">@ViewBag.DeThi.TenDeThi</h4>
+            <h5 class="text-info pb-2">Người làm bài: @ViewBag.TenHS</h5>
+        </div>
+
+        <div class="row">
+            <div class="col-8 text-dark d-flex">
+                <div class="mr-3 p-1">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    <span>@ViewBag.SoCauHoi Câu Hỏi </span>
+                </div>
+                <div class="mr-3 p-1">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <span>@ViewBag.DeThi.ThoiGianLamBai Phút</span>
+                </div>
+                <div class="mr-3 p-1">
+                    <i class="far fa-file-alt" aria-hidden="true"></i>
+                    <span>@ViewBag.DeThi.LoaiDe</span>
+                </div>
+            </div>
+            <div class="col-md-4 text-right">
+                <div name="clock" class="clock text-right btn btn-sm btn-secondary font-weight-bold">
+                    @*00:15:00*@
+                    <span class="hours">00:</span><span class="minutes">00:</span><span class="seconds">00</span>
+                </div>
+            </div>
+            @*sticky top timer*@
+            <div name="clock" class="clock text-right btn btn-sm btn-secondary font-weight-bold fixed-top pr-5">
+                @*00:15:00*@
+                <span>Thời gian còn lại:&nbsp</span>
+                <span class="hours">00:</span><span class="minutes">00:</span><span class="seconds">00</span>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <form method="post" action="@Url.Action("DoExam")">
+            @Html.HiddenFor(model => model.DeThiID)
+            <input type="hidden" id="timePast" name="TimePast"/>
+
+            @for (int i = 0; i < Model.Questions.Count(); i++)
+            {
+                @Html.HiddenFor(model => model.Questions[i].CauHoiID)
+                <div class="row p-2">
+                    <div class="box box-primary p-1 bg-white">
+                        <div class="box-header with-border">
+                            <div class="col-12 p-1">
+                                <p class="py-0">
+                                    <b> Câu số @(i+1):</b>
+                                    <i>(Độ khó: <span class='text-info'><b>@Model.Questions[i].DoKho</b></span>)</i> <br />
+                                <p><strong>@Model.Questions[i].NoiDungCauHoi</strong></p>
+                            </div>
+                        </div>
+                        @*<input type="hidden" name="_causo" id="_causo" value="1">
+                    <input type="hidden" name="_causo_id" id="_causo_id" value="3692">
+                    <input type="hidden" name="_currentpage" value="1">
+                    <input type="hidden" name="_totalpages" value="10">*@
+
+                        <div class="box-body p-1">
+
+                            <div class="col-12 p-1  pull-left">
+
+                                <div class="col-12 p-1 d-flex" style="padding:5px">
+                                    @*<input class="m-2" type="radio" id="Cau1A" name="Question@(i)" value="A" required />*@
+                                    @*@Html.RadioButtonFor(model => model.Questions[i].Answer_A, Model)*@
+                                    @Html.RadioButtonFor(m => m.Questions[i].SelectedAnswer, "A", new { @class = "m-2" })
+                                    <label for="Cau1A" style="font-weight: normal !important; "> <b>&nbsp;A:&nbsp;</b> @Model.Questions[i].Answer_A</label>
+                                </div>
+                                <div class="col-12 p-1 d-flex" style="padding:5px">
+                                    @Html.RadioButtonFor(m => m.Questions[i].SelectedAnswer, "B", new { @class = "m-2" })
+                                    <label for="Cau1B" style="font-weight: normal !important; "> <b>&nbsp;B:&nbsp;</b> @Model.Questions[i].Answer_B</label>
+                                </div>
+                                <div class="col-12 p-1 d-flex" style="padding:5px">
+                                    @Html.RadioButtonFor(m => m.Questions[i].SelectedAnswer, "C", new { @class = "m-2" })
+                                    <label for="Cau1C" style="font-weight: normal !important; "> <b>&nbsp;C:&nbsp;</b> @Model.Questions[i].Answer_C</label>
+                                </div>
+                                <div class="col-12 p-1 d-flex" style="padding:5px">
+                                    @Html.RadioButtonFor(m => m.Questions[i].SelectedAnswer, "D", new { @class = "m-2" })
+                                    <label for="Cau1D" style="font-weight: normal !important; "> <b>&nbsp;D:&nbsp;</b> @Model.Questions[i].Answer_D</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <button class="btn btn-primary" type="submit" id="submit_btn">Nộp bài</button>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = ViewBag.MonHoc.TenMH;
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h2>@ViewBag.MonHoc.TenMH</h2>
+    </div>
+    <div class="card-body">
+        @foreach (var item in ViewBag.DeThi)
+        {
+            <div class="box-header ">
+                <div class="col-12 p-1 d-flex">
+                    <div class="col-9 col-md-10 p-1 pull-left fz-4">
+                        <a class="text-dark" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})" style="font-size: 22px"> @item.TenDeThi </a>
+                    </div>
+                    <div class="col-3 col-md-2 p-1 pull-right text-right">
+                        <span class="pb-0">
+                            <a class="btn btn-primary rounded-pill" style="font-size: 18px;" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})"> Làm bài </a> &nbsp;
+                        </span>
+                    </div>
+                </div>
+                <div class="d-flex mt-3">
+                    <div class="mr-3 p-1">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                        <span>@item.NumberQuestion Câu Hỏi </span>
+                    </div>
+                    <div class="mr-3 p-1">
+                        <i class="far fa-clock" aria-hidden="true"></i>
+                        <span>@item.ThoiGianLamBai Phút</span>
+                    </div>
+                    <div class="mr-3 p-1">
+                        <i class="far fa-file-alt" aria-hidden="true"></i>
+                        <span>@item.LoaiDe</span>
+                    </div>
+                </div>
+            </div>
+            <hr style="border: 2px solid #00C0EF; border-radius: 2px;" />
+        }
+    </div>
+</div>
+

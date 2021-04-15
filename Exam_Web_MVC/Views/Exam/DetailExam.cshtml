@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "DetailExam";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@{
+    if (Session["TaiKhoanID_session"] == null)
+    {
+        <div class="alert alert-warning">
+            Bạn phải đăng nhập mới có thể làm bài kiểm tra!
+        </div>
+    }
+}
+<div class="card">
+    <div class="card-header">
+        <h2>@ViewBag.DeThi.TenDeThi</h2>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <td>Tên đề thi</td>
+                <td>@ViewBag.DeThi.TenDeThi</td>
+            </tr>
+            <tr>
+                <td>Môn học</td>
+                <td>@ViewBag.DeThi.MonHoc.TenMH</td>
+            </tr>
+            <tr>
+                <td>Thời gian làm bài</td>
+                <td>@ViewBag.DeThi.ThoiGianLamBai</td>
+            </tr>
+            <tr>
+                <td>Thời gian bắt đầu làm bài</td>
+                <td>@ViewBag.DeThi.ThoiGianBatDauLamBai</td>
+            </tr>
+            <tr>
+                <td>Loại đề</td>
+                <td>@ViewBag.DeThi.LoaiDe</td>
+            </tr>
+            <tr>
+                <td>Người ra đề</td>
+                <td>@ViewBag.DeThi.GiaoVien.TenGV</td>
+            </tr>
+        </table>
+        <div class="form-group">
+            @{
+                if (Session["TaiKhoanID_session"] != null)
+                {
+                    <a class="btn btn-primary rounded-pill" href="@Url.Action("DoExam","Exam",new { id=ViewBag.DeThi.DeThiID})">Làm bài</a>
+                }
+            }
+            <a class="btn btn-secondary rounded-pill" href="@Url.Action("ListExam","Home",new { id=ViewBag.DeThi.MonHocID})">Quay lại</a>
+        </div>
+    </div>
+</div>
+<script src="~/Assets/User/scripts/timer_count_down.js"></script>
+
+

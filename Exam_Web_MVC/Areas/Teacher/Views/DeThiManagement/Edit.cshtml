@@ -1,0 +1,109 @@
+﻿@model Exam_Web_Core.DeThi
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Teacher/Views/Shared/_TeacherLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Sửa Đề</h2>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.DeThiID)
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Môn học</div>
+                <div class="col-md-10">
+                    @Html.DropDownList("MonHocID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MonHocID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Tên đề</div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TenDeThi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenDeThi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Thời gian làm bài</div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ThoiGianLamBai, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ThoiGianLamBai, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Người ra đề</div>
+                <div class="col-md-10">
+                    @Html.DropDownList("GiaoVienID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.GiaoVienID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Loại đề</div>
+                <div class="col-md-10">
+                    @*<select class="form-control" name="LoaiDe" id="LoaiDe" onchange="CheckLoaiDe()>
+                        <option value="revision">Luyện tập</option>
+                        <option value="test">Kiểm tra thử</option>
+                        <option value="final test">Kiểm tra</option>
+                    </select>*@
+                    @Html.DropDownList("LoaiDe", new List<SelectListItem> {
+                    new SelectListItem{ Text="Luyện Tập",Value="revision"},
+                    new SelectListItem{ Text="Thi Thử",Value="test"},
+                    new SelectListItem{ Text="Thi Thật",Value="final test"} },
+htmlAttributes: new { @class = "form-control", @onchange = "CheckLoaiDe()" }
+)
+                </div>
+            </div>
+
+            <div class="form-group" id="ThoiGianBatDauLamBai">
+                <div class="control-label col-md-4">Thời gian bắt đầu làm bài</div>
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.ThoiGianBatDauLamBai, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ThoiGianBatDauLamBai, "", new { @class = "text-danger" })*@
+                    @* value for date time 2017-06-01T08:30*@
+                    @{ 
+                        DateTime dt = (DateTime)Model.ThoiGianBatDauLamBai;
+                    }
+                    <input type="datetime-local" class="form-control" name="ThoiGianBatDauLamBai" id="ThoiGianBatDauLamBai" value="@dt.ToString("yyyy-MM-dd")T@(dt.ToString("HH:mm"))" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Lưu lại" class="btn btn-primary rounded-pill" />
+                    <a class="btn btn-secondary rounded-pill" href="@Url.Action("Index","DeThiManagement")">@*<i class="fas fa-chevron-circle-left"></i>&nbsp*@Quay Lại</a>
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <div class="col-md-offset-2 col-md-10">-->
+                    @*@Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })*@
+                <!--</div>
+            </div>-->
+        </div>
+        }
+    </div>
+</div>
+<script>
+    var loaiDe = document.getElementById("LoaiDe").value;
+    function CheckLoaiDe() {
+        loaiDe = document.getElementById("LoaiDe").value;
+    }
+    setInterval(() => {
+        if (loaiDe == "final test") {
+            document.getElementById("ThoiGianBatDauLamBai").style.opacity = 1;
+        } else {
+            document.getElementById("ThoiGianBatDauLamBai").style.opacity = 0;
+        }
+    },200)
+</script>

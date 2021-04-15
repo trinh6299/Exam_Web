@@ -1,0 +1,506 @@
+﻿@model IEnumerable<Exam_Web_Core.DeThi>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@{
+    int offset = 4;
+}
+
+<div style="background-image:url(../../Assets/Admin/images/home_user.jpg); width: 100%;height: 410px;">
+
+</div>
+<div class="card">
+    <div class="card-body" style="font-size:18px;">
+        <div class="col-12 d-flex">
+            <div class="h3 text-primary pl-2">Giới thiệu</div>
+        </div>
+        &nbsp&nbsp&nbsp&nbsp <span class="text-success">Exam Online</span>  được thành lập để tạo ra một Thư Viện các Đề Thi Trung Học Phổ Thông (THPT) Quốc Gia. Các đề thi được tổng hợp và chọn lọc từ các đề thi chính thức, tham khảo của Bộ Giáo Dục, các Sở Giáo Dục và các Trường Chuyên trong cả nước. Hy vọng <span class="text-success">Exam Online</span> sẽ là nguồn tài liệu tham khảo hữu ích cho các bạn học sinh (và giáo viên) để chuẩn bị tốt nhất cho kỳ thi đại học hay thi THPT Quốc gia. Hãy đăng ký thành viên và bắt đầu <span class="text-success">Exam Online</span> hoàn toàn miễn phí. Bài làm sẽ được chấm điểm ngay sau khi Nộp bài và được lưu lại trong phần Bảng Điểm của từng thành viên để cho các bạn tiện theo dõi.
+
+        Nếu các bạn thấy trang <span class="text-success">Exam Online</span> hữu ích, các bạn hãy ấn "Thích" và "Chia sẻ" lên trang Facebook của bạn để cho nhiều người cùng sử dụng (sau khi ấn "Thích" và "Chia sẻ", các bạn sẽ được thi thử miễn phí không bị giới hạn bởi số đề thi). Và khi có nhiều người cùng sử dụng trang <span class="text-success">Exam Online</span>, chúng tôi sẽ cập nhật càng nhiều đề thi, đáp án và nhiều tính năng khác nữa.
+
+
+        <div class="col-12 d-flex">
+            <div class="h3 text-primary pl-2 mt-2">Các đề thi mới nhất</div>
+        </div>
+        @* Mon Toan *@
+        <hr style="border: 2px solid #00C0EF; border-radius: 2px;" />
+        <div class="col-12 d-flex">
+            <div class="h3 text-primary pl-2 mt-2 text-success">Môn Toán</div> @*id=1*@
+        </div>
+        @{
+            int count = 0;
+            foreach (var item in Model)
+            {
+                if (item.MonHocID == 1)
+                {
+                    count++;
+                    if (count == offset)
+                    {
+                        break;
+                    }
+                    <div class="box-header ml-1">
+                        <div class="col-12 p-1 d-flex">
+                            <div class="col-9 col-md-10 p-1 pull-left fz-4">
+                                <a class="text-dark" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})" style="font-size: 22px"> @item.TenDeThi </a>
+                                @{
+                                    if (count == 1)
+                                    {
+                                        <img src="~/Assets/User/gif/flash_new.gif" alt="" sizes="" srcset="" style="width: 32px;">
+                                    }
+                                }
+                                <div class="d-flex mt-3">
+                                    <div class="mr-3 p-1">
+                                        <i class="fa fa-book" aria-hidden="true"></i>
+                                        <span>@item.CauHois.Count Câu Hỏi </span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-clock" aria-hidden="true"></i>
+                                        <span>@item.ThoiGianLamBai Phút</span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-file-alt" aria-hidden="true"></i>
+                                        <span>@item.LoaiDe</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-md-2 p-1 pull-right text-right">
+                                <span class="pb-0">
+                                    <a class="btn btn-primary mt-4" style="font-size: 18px;" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})"> Làm bài </a> &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            }
+        }
+        @* Mon Toan end *@
+        @* Mon Ly *@
+        <hr style="border: 2px solid #00C0EF; border-radius: 2px;" />
+        <div class="col-12 d-flex">
+            <div class="h3 text-primary pl-2 mt-2 text-success">Môn Lý</div> @*id=2*@
+        </div>
+        @{
+            count = 0;
+            foreach (var item in Model)
+            {
+                if (item.MonHocID == 2)
+                {
+                    count++;
+                    if (count == offset)
+                    {
+                        break;
+                    }
+                    <div class="box-header ml-1">
+                        <div class="col-12 p-1 d-flex">
+                            <div class="col-9 col-md-10 p-1 pull-left fz-4">
+                                <a class="text-dark" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})" style="font-size: 22px"> @item.TenDeThi </a>
+                                @{
+                                    if (count == 1)
+                                    {
+                                        <img src="~/Assets/User/gif/flash_new.gif" alt="" sizes="" srcset="" style="width: 32px;">
+                                    }
+                                }
+                                <div class="d-flex mt-3">
+                                    <div class="mr-3 p-1">
+                                        <i class="fa fa-book" aria-hidden="true"></i>
+                                        <span>@item.CauHois.Count Câu Hỏi </span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-clock" aria-hidden="true"></i>
+                                        <span>@item.ThoiGianLamBai Phút</span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-file-alt" aria-hidden="true"></i>
+                                        <span>@item.LoaiDe</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-md-2 p-1 pull-right text-right">
+                                <span class="pb-0">
+                                    <a class="btn btn-primary mt-4" style="font-size: 18px;" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})"> Làm bài </a> &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            }
+        }
+        @* Mon Ly end *@
+        @* Mon Hoa *@
+        <hr style="border: 2px solid #00C0EF; border-radius: 2px;" />
+        <div class="col-12 d-flex">
+            <div class="h3 text-primary pl-2 mt-2 text-success">Môn Hóa</div> @*id=3*@
+        </div>
+        @{
+            count = 0;
+            foreach (var item in Model)
+            {
+                if (item.MonHocID == 3)
+                {
+                    count++;
+                    if (count == offset)
+                    {
+                        break;
+                    }
+                    <div class="box-header ml-1">
+                        <div class="col-12 p-1 d-flex">
+                            <div class="col-9 col-md-10 p-1 pull-left fz-4">
+                                <a class="text-dark" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})" style="font-size: 22px"> @item.TenDeThi </a>
+                                @{
+                                    if (count == 1)
+                                    {
+                                        <img src="~/Assets/User/gif/flash_new.gif" alt="" sizes="" srcset="" style="width: 32px;">
+                                    }
+                                }
+                                <div class="d-flex mt-3">
+                                    <div class="mr-3 p-1">
+                                        <i class="fa fa-book" aria-hidden="true"></i>
+                                        <span>@item.CauHois.Count Câu Hỏi </span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-clock" aria-hidden="true"></i>
+                                        <span>@item.ThoiGianLamBai Phút</span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-file-alt" aria-hidden="true"></i>
+                                        <span>@item.LoaiDe</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-md-2 p-1 pull-right text-right">
+                                <span class="pb-0">
+                                    <a class="btn btn-primary mt-4" style="font-size: 18px;" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})"> Làm bài </a> &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            }
+        }
+        @* Mon Hoa end *@
+        @* Mon Van *@
+        <hr style="border: 2px solid #00C0EF; border-radius: 2px;" />
+        <div class="col-12 d-flex">
+            <div class="h3 text-primary pl-2 mt-2 text-success">Môn Văn</div> @*id=4*@
+        </div>
+        @{
+            count = 0;
+            foreach (var item in Model)
+            {
+                if (item.MonHocID == 4)
+                {
+                    count++;
+                    if (count == offset)
+                    {
+                        break;
+                    }
+                    <div class="box-header ml-1">
+                        <div class="col-12 p-1 d-flex">
+                            <div class="col-9 col-md-10 p-1 pull-left fz-4">
+                                <a class="text-dark" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})" style="font-size: 22px"> @item.TenDeThi </a>
+                                @{
+                                    if (count == 1)
+                                    {
+                                        <img src="~/Assets/User/gif/flash_new.gif" alt="" sizes="" srcset="" style="width: 32px;">
+                                    }
+                                }
+                                <div class="d-flex mt-3">
+                                    <div class="mr-3 p-1">
+                                        <i class="fa fa-book" aria-hidden="true"></i>
+                                        <span>@item.CauHois.Count Câu Hỏi </span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-clock" aria-hidden="true"></i>
+                                        <span>@item.ThoiGianLamBai Phút</span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-file-alt" aria-hidden="true"></i>
+                                        <span>@item.LoaiDe</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-md-2 p-1 pull-right text-right">
+                                <span class="pb-0">
+                                    <a class="btn btn-primary mt-4" style="font-size: 18px;" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})"> Làm bài </a> &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            }
+        }
+        @* Mon Van end *@
+        @* Mon Anh *@
+        <hr style="border: 2px solid #00C0EF; border-radius: 2px;" />
+        <div class="col-12 d-flex">
+            <div class="h3 text-primary pl-2 mt-2 text-success">Môn Anh</div> @*id=5*@
+        </div>
+        @{
+            count = 0;
+            foreach (var item in Model)
+            {
+                if (item.MonHocID == 5)
+                {
+                    count++;
+                    if (count == offset)
+                    {
+                        break;
+                    }
+                    <div class="box-header ml-1">
+                        <div class="col-12 p-1 d-flex">
+                            <div class="col-9 col-md-10 p-1 pull-left fz-4">
+                                <a class="text-dark" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})" style="font-size: 22px"> @item.TenDeThi </a>
+                                @{
+                                    if (count == 1)
+                                    {
+                                        <img src="~/Assets/User/gif/flash_new.gif" alt="" sizes="" srcset="" style="width: 32px;">
+                                    }
+                                }
+                                <div class="d-flex mt-3">
+                                    <div class="mr-3 p-1">
+                                        <i class="fa fa-book" aria-hidden="true"></i>
+                                        <span>@item.CauHois.Count Câu Hỏi </span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-clock" aria-hidden="true"></i>
+                                        <span>@item.ThoiGianLamBai Phút</span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-file-alt" aria-hidden="true"></i>
+                                        <span>@item.LoaiDe</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-md-2 p-1 pull-right text-right">
+                                <span class="pb-0">
+                                    <a class="btn btn-primary mt-4" style="font-size: 18px;" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})"> Làm bài </a> &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            }
+        }
+        @* Mon Anh end *@
+        @* Mon Sinh *@
+        <hr style="border: 2px solid #00C0EF; border-radius: 2px;" />
+        <div class="col-12 d-flex">
+            <div class="h3 text-primary pl-2 mt-2 text-success">Môn Sinh</div> @*id=6*@
+        </div>
+        @{
+            count = 0;
+            foreach (var item in Model)
+            {
+                if (item.MonHocID == 6)
+                {
+                    count++;
+                    if (count == offset)
+                    {
+                        break;
+                    }
+                    <div class="box-header ml-1">
+                        <div class="col-12 p-1 d-flex">
+                            <div class="col-9 col-md-10 p-1 pull-left fz-4">
+                                <a class="text-dark" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})" style="font-size: 22px"> @item.TenDeThi </a>
+                                @{
+                                    if (count == 1)
+                                    {
+                                        <img src="~/Assets/User/gif/flash_new.gif" alt="" sizes="" srcset="" style="width: 32px;">
+                                    }
+                                }
+                                <div class="d-flex mt-3">
+                                    <div class="mr-3 p-1">
+                                        <i class="fa fa-book" aria-hidden="true"></i>
+                                        <span>@item.CauHois.Count Câu Hỏi </span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-clock" aria-hidden="true"></i>
+                                        <span>@item.ThoiGianLamBai Phút</span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-file-alt" aria-hidden="true"></i>
+                                        <span>@item.LoaiDe</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-md-2 p-1 pull-right text-right">
+                                <span class="pb-0">
+                                    <a class="btn btn-primary mt-4" style="font-size: 18px;" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})"> Làm bài </a> &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            }
+        }
+        @* Mon Sinh end *@
+        @* Mon Su *@
+        <hr style="border: 2px solid #00C0EF; border-radius: 2px;" />
+        <div class="col-12 d-flex">
+            <div class="h3 text-primary pl-2 mt-2 text-success">Môn Sử</div> @*id=7*@
+        </div>
+        @{
+            count = 0;
+            foreach (var item in Model)
+            {
+                if (item.MonHocID == 7)
+                {
+                    count++;
+                    if (count == offset)
+                    {
+                        break;
+                    }
+                    <div class="box-header ml-1">
+                        <div class="col-12 p-1 d-flex">
+                            <div class="col-9 col-md-10 p-1 pull-left fz-4">
+                                <a class="text-dark" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})" style="font-size: 22px"> @item.TenDeThi </a>
+                                @{
+                                    if (count == 1)
+                                    {
+                                        <img src="~/Assets/User/gif/flash_new.gif" alt="" sizes="" srcset="" style="width: 32px;">
+                                    }
+                                }
+                                <div class="d-flex mt-3">
+                                    <div class="mr-3 p-1">
+                                        <i class="fa fa-book" aria-hidden="true"></i>
+                                        <span>@item.CauHois.Count Câu Hỏi </span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-clock" aria-hidden="true"></i>
+                                        <span>@item.ThoiGianLamBai Phút</span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-file-alt" aria-hidden="true"></i>
+                                        <span>@item.LoaiDe</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-md-2 p-1 pull-right text-right">
+                                <span class="pb-0">
+                                    <a class="btn btn-primary mt-4" style="font-size: 18px;" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})"> Làm bài </a> &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            }
+        }
+        @* Mon Su end *@
+        @* Mon Dia *@
+        <hr style="border: 2px solid #00C0EF; border-radius: 2px;" />
+        <div class="col-12 d-flex">
+            <div class="h3 text-primary pl-2 mt-2 text-success">Môn Địa</div> @*id=8*@
+        </div>
+        @{
+            count = 0;
+            foreach (var item in Model)
+            {
+                if (item.MonHocID == 8)
+                {
+                    count++;
+                    if (count == offset)
+                    {
+                        break;
+                    }
+                    <div class="box-header ml-1">
+                        <div class="col-12 p-1 d-flex">
+                            <div class="col-9 col-md-10 p-1 pull-left fz-4">
+                                <a class="text-dark" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})" style="font-size: 22px"> @item.TenDeThi </a>
+                                @{
+                                    if (count == 1)
+                                    {
+                                        <img src="~/Assets/User/gif/flash_new.gif" alt="" sizes="" srcset="" style="width: 32px;">
+                                    }
+                                }
+                                <div class="d-flex mt-3">
+                                    <div class="mr-3 p-1">
+                                        <i class="fa fa-book" aria-hidden="true"></i>
+                                        <span>@item.CauHois.Count Câu Hỏi </span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-clock" aria-hidden="true"></i>
+                                        <span>@item.ThoiGianLamBai Phút</span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-file-alt" aria-hidden="true"></i>
+                                        <span>@item.LoaiDe</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-md-2 p-1 pull-right text-right">
+                                <span class="pb-0">
+                                    <a class="btn btn-primary mt-4" style="font-size: 18px;" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})"> Làm bài </a> &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            }
+        }
+        @* Mon Dia end *@
+        @* Mon GDCD *@
+        <hr style="border: 2px solid #00C0EF; border-radius: 2px;" />
+        <div class="col-12 d-flex">
+            <div class="h3 text-primary pl-2 mt-2 text-success">Môn GDCD</div> @*id=9*@
+        </div>
+        @{
+            count = 0;
+            foreach (var item in Model)
+            {
+                if (item.MonHocID == 9)
+                {
+                    count++;
+                    if (count == offset)
+                    {
+                        break;
+                    }
+                    <div class="box-header ml-1">
+                        <div class="col-12 p-1 d-flex">
+                            <div class="col-9 col-md-10 p-1 pull-left fz-4">
+                                <a class="text-dark" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})" style="font-size: 22px"> @item.TenDeThi </a>
+                                @{
+                                    if (count == 1)
+                                    {
+                                        <img src="~/Assets/User/gif/flash_new.gif" alt="" sizes="" srcset="" style="width: 32px;">
+                                    }
+                                }
+                                <div class="d-flex mt-3">
+                                    <div class="mr-3 p-1">
+                                        <i class="fa fa-book" aria-hidden="true"></i>
+                                        <span>@item.CauHois.Count Câu Hỏi </span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-clock" aria-hidden="true"></i>
+                                        <span>@item.ThoiGianLamBai Phút</span>
+                                    </div>
+                                    <div class="mr-3 p-1">
+                                        <i class="far fa-file-alt" aria-hidden="true"></i>
+                                        <span>@item.LoaiDe</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3 col-md-2 p-1 pull-right text-right">
+                                <span class="pb-0">
+                                    <a class="btn btn-primary mt-4" style="font-size: 18px;" href="@Url.Action("DetailExam","Exam",new { id=item.DeThiID})"> Làm bài </a> &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            }
+        }
+        @* Mon GDCD end *@
+    </div>
+
+</div>

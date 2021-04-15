@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="820f8d48cd5b4e6cbf9023cf6ebc261e" Name="Diagram1">
+        <EntityTypeShape EntityType="Exam_WebModel.CauHoi" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Exam_WebModel.DapAnDaLuaChon" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Exam_WebModel.DeThi" Width="1.5" PointX="11.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Exam_WebModel.DoKho" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Exam_WebModel.GiaoVien" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Exam_WebModel.HocSinh" Width="1.5" PointX="11.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Exam_WebModel.HocVi" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Exam_WebModel.LanThi" Width="1.5" PointX="13.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Exam_WebModel.LienHe" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Exam_WebModel.MonHoc" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Exam_WebModel.PhanHoi" Width="1.5" PointX="13.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Exam_WebModel.TaiKhoan" Width="1.5" PointX="3.75" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="Exam_WebModel.FK_CauHoi_DoKho" ManuallyRouted="false" />
+        <AssociationConnector Association="Exam_WebModel.FK_CauHoi_MonHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="Exam_WebModel.FK_DapAnDaLuaChon_CauHoi" ManuallyRouted="false" />
+        <AssociationConnector Association="Exam_WebModel.FK_DapAnDaLuaChon_LanThi" ManuallyRouted="false" />
+        <AssociationConnector Association="Exam_WebModel.FK_DeThi_GiaoVien" ManuallyRouted="false" />
+        <AssociationConnector Association="Exam_WebModel.FK_DeThi_MonHocID" ManuallyRouted="false" />
+        <AssociationConnector Association="Exam_WebModel.FK_LanThi_DeThi" ManuallyRouted="false" />
+        <AssociationConnector Association="Exam_WebModel.FK_GiaoVien_HocVi" ManuallyRouted="false" />
+        <AssociationConnector Association="Exam_WebModel.FK_GiaoVien_MonHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="Exam_WebModel.FK_GiaoVien_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="Exam_WebModel.FK_HocSinh_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="Exam_WebModel.FK_LanThi_HocSinh" ManuallyRouted="false" />
+        <AssociationConnector Association="Exam_WebModel.FK_PhanHoi_HocSinh" ManuallyRouted="false" />
+        <AssociationConnector Association="Exam_WebModel.DeThi_CauHoi" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

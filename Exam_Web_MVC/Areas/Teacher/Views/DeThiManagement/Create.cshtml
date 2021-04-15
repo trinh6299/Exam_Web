@@ -1,0 +1,100 @@
+﻿@model Exam_Web_Core.DeThi
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Teacher/Views/Shared/_TeacherLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Thêm Đề Thi</h2>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="control-label col-md-2">Môn học</div>
+                <div class="col-md-10">
+                    @Html.DropDownList("MonHocID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MonHocID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Tên đề</div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TenDeThi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenDeThi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-4">Thời gian làm bài (phút)</div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ThoiGianLamBai, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ThoiGianLamBai, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Người ra đề</div>
+                <div class="col-md-10">
+                    @Html.DropDownList("GiaoVienID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.GiaoVienID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Loại đề</div>
+                <div class="col-md-10">
+                    <select class="form-control" name="LoaiDe" id="LoaiDe" onchange="CheckLoaiDe()">
+                        <option value="revision">Luyện tập</option>
+                        <option value="test">Kiểm tra thử</option>
+                        <option value="final test">Kiểm tra</option>
+                    </select>
+                    @*@Html.EditorFor(model => model.LoaiDe, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LoaiDe, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+            <div class="form-group" id="ThoiGianBatDauLamBai">
+                <div class="control-label col-md-3">Thời gian bắt đầu làm bài</div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ThoiGianBatDauLamBai, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.ThoiGianBatDauLamBai, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*Submit*@
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Tạo Đề" class="btn btn-primary rounded-pill" />
+                </div>
+            </div>
+            @*quay lai*@
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <a class="btn btn-secondary rounded-pill" href="@Url.Action("Index","Dethimanagement")">Quay Lại</a>
+                    @*@Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })*@
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+<script>
+    var loaiDe;
+    function CheckLoaiDe() {
+        loaiDe = document.getElementById("LoaiDe").value;
+        //alert(loaiDe);
+    }
+    setInterval(() => {
+        if (loaiDe == "final test") {
+            document.getElementById("ThoiGianBatDauLamBai").style.opacity = 1;
+        } else {
+            document.getElementById("ThoiGianBatDauLamBai").style.opacity = 0;
+        }
+    },200)
+</script>

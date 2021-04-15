@@ -1,0 +1,34 @@
+﻿@model Exam_Web_Core.ViewModels.AddQuestionAuto_Model
+@{
+    ViewBag.Title = "AddQuestionAuto";
+    Layout = "~/Areas/Teacher/Views/Shared/_TeacherLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Thêm Câu Hỏi Cho Đề "@ViewBag.TenDeThi"</h2>
+        <a class="btn btn-secondary" href="@Url.Action("Details","DeThiManagement",new { id=(int)Session["DeThiID"]})">Quay Lại</a>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label class="col-form-label">Số Câu Dễ</label>
+                <input class="form-control" type="number" name="SoCauDe"/>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Số Câu Trung Bình</label>
+                <input class="form-control" type="number" name="SoCauTrungBinh"/>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Số Câu Khó</label>
+                <input class="form-control" type="number" name="SoCauKho"/>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Số Câu Rất Khó</label>
+                <input class="form-control" type="number" name="SoCauRatKho"/>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Thêm Câu Hỏi"/>
+        </form>
+    </div>
+</div>
+

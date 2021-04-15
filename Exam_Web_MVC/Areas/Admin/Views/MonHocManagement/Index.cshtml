@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Exam_Web_Core.MonHoc>
+
+@{
+    ViewBag.Title = "Danh sách môn học";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h2>Danh Sách Môn học</h2>
+        <a class="btn btn-primary rounded-pill" href="@Url.Action("Create","MonHocManagement")">Thêm Môn Học</a>
+        @*@Html.ActionLink("Thêm môn học", "Create", null, new { @class = "btn btn-primary" })*@
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>
+                    Tên môn học
+                </th>
+                <th>
+                    Hành động
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenMH)
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            <a href="@Url.Action("Edit","MonHocManagement",new { id=item.MonHocID})"><i class="far fa-edit" style="font-size:22px;" title="SỬa Môn Học"></i></a>
+                            <a href="@Url.Action("Delete","MonHocManagement",new { id=item.MonHocID})" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"><i class="far fa-trash-alt" style="font-size:22px;" title="Xóa Môn Học"></i></a>
+                        </div>
+
+                        @*@Html.ActionLink("Sửa", "Edit", new { id = item.MonHocID }, new { @class="btn btn-primary"}) 
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.MonHocID }, new { @class="btn btn-danger", onclick = "return confirm('Bạn có chắc chắn muốn xóa không?')" })*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+

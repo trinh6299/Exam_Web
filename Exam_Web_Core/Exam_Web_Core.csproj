@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F1507C9-698F-46F9-92BF-CBFA70263A81}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Exam_Web_Core</RootNamespace>
+    <AssemblyName>Exam_Web_Core</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CauHoi.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DapAnDaLuaChon.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DeThi.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DoKho.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoVien.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HocSinh.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HocVi.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LanThi.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LienHe.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MonHoc.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhanHoi.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CauHoiRepository.cs" />
+    <Compile Include="Repositories\DeThiRepository.cs" />
+    <Compile Include="Repositories\DoKhoRepository.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
+    <Compile Include="Repositories\GiaoVienRepository.cs" />
+    <Compile Include="Repositories\HocSinhRepository.cs" />
+    <Compile Include="Repositories\HocViRepository.cs" />
+    <Compile Include="Repositories\IGenericRepository.cs" />
+    <Compile Include="Repositories\DapAnDaLuaChonRepository.cs" />
+    <Compile Include="Repositories\LanThiRepository.cs" />
+    <Compile Include="Repositories\LienHeRepository.cs" />
+    <Compile Include="Repositories\MonHocRepository.cs" />
+    <Compile Include="Repositories\MultitableRepository.cs" />
+    <Compile Include="Repositories\TaiKhoanRepository.cs" />
+    <Compile Include="TaiKhoan.cs">
+      <DependentUpon>DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AddQuestionAuto_Model.cs" />
+    <Compile Include="ViewModels\ChangePassword_Model.cs" />
+    <Compile Include="ViewModels\ListResult_Model.cs" />
+    <Compile Include="ViewModels\Question_Model.cs" />
+    <Compile Include="ViewModels\DeThiDetail_Model.cs" />
+    <Compile Include="ViewModels\DoExam_Model.cs" />
+    <Compile Include="ViewModels\GiaoVien_TaiKhoan_Model.cs" />
+    <Compile Include="ViewModels\HocSinh_TaiKhoan_Model.cs" />
+    <Compile Include="ViewModels\Search_Model.cs" />
+    <Compile Include="ViewModels\UserDetail_Model.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="DataModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataModels.edmx.diagram">
+      <DependentUpon>DataModels.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataModels.edmx</DependentUpon>
+      <LastGenOutput>DataModels.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataModels.edmx</DependentUpon>
+      <LastGenOutput>DataModels.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

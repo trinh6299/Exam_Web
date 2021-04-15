@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Result";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Kết quả làm bài</h2>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>Học sinh</td>
+                <td>@ViewBag.TenHocSinh</td>
+            </tr>
+            <tr>
+                <td>Tên đề</td>
+                <td>@ViewBag.TenDe</td>
+            </tr>
+            <tr>
+                <td>Số câu đúng / Tổng số câu</td>
+                <td>@ViewBag.SoCauDung / @ViewBag.TongSoCau</td>
+            </tr>
+            <tr>
+                <td>Điểm</td>
+                <td>@ViewBag.Diem</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
